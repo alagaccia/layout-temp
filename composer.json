@@ -1,0 +1,17 @@
+{
+    "name": "alagaccia/layout-temp",
+    "description": "Layout temp",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Alagaccia\\LayoutTemp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Andrea Lagaccia",
+            "email": "info@deltadigital.it"
+        }
+    ],
+    "require": {}
+}
