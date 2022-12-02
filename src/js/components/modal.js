@@ -1,8 +1,12 @@
 window.openModal = function (self = null, customUrl = null, customModal = null) {
     var url = $(self).attr('data-url') || $(self).attr('href') || customUrl;
     var modal = $(self).attr('data-modal') || customModal;
+    var preClose = $(self).attr('data-preclose');
 
     if ( url != null ) {
+        if (preClose) {
+            $('.modal').removeClass('is-active');
+        }
 
         var zIndexes = [];
         var modals = $('.modal.is-active');
