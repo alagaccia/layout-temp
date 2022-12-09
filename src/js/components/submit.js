@@ -37,7 +37,9 @@ $(document).on('submit', '.submit', function(e) {
             window.submitAjax.beforeSend(btnSubmit, result);
         }
     }).done(function (result) {
-        window.submitAjax.done(result);
+        if ( ! form.hasClass('only-errors') ) {
+            window.submitAjax.done(result);
+        }
     }).always(function (result) {
         window.submitAjax.always(btnSubmit, btnClass, result);
     }).fail(function (result) {
