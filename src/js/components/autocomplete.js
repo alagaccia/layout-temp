@@ -32,6 +32,8 @@ $(function(){
                 $.each(suggestion.replace, function (index, value) {
                     $( '.' + index ).text(value);
                 });
+
+                window.submitAjax.actions(suggestion.actions);
             }
         });
 
