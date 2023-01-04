@@ -3,33 +3,44 @@ $(document).on('click', '.destroy', function(e) {
 
     let action = $(this).attr('data-url');
     let title = $(this).attr('data-title') || null;
+    let inline = $(this).hasClass('inline');
 
-    // Open Modal
-    var urlModal = "/app/remove";
-    var modal = "#modal";
-
-    $.get(urlModal, function (data) {
-        $(modal).html(data);
-        $(modal).find('form').attr('action', action);
-        if (title) {
-            $(modal).find('form').find('#WHAT').text(title);
-        }
-        $(modal).addClass('is-active');
-
-        window.ajaxAfter();
-
-        $('[type="submit"]').click(function(e) {
-            // if ( $('[name="delete"]').val().toLowerCase() != "elimina" ) {
-            //
-            //     $('[name="delete"]').removeClass('is-danger');
-            //     $('[name="delete"]').parents('.field').find('.help.is-danger').remove();
-            //
-            //     $('[name="delete"]').parents('.field').append('<p class="help is-danger">Dicitura errata</p>');
-            //     $('[name="delete"]').addClass('is-danger');
-            //
-            //     return false;
-            // }
-            return true;
+    if ( inline ) {
+        $.ajax({
+            type: 'DELETE',
+            url: action,
+            dataType: 'json',
+            beforeSend: function (result) {
+                // window.submitAjax.beforeSend(btnSubmit, result);
+            }
+        }).done(function (result) {
+            window.submitAjax.done(result);
+        }).always(function (result) {
+            // window.submitAjax.always(btnSubmit, btnClass, result);
+        }).fail(function (result) {
+            // window.submitAjax.fail(form, result);
         });
-    });
+    } else {
+
+        $(this).parents('.modal').removeClass('is-active').html('');
+
+        // Open Modal
+        var urlModal = "/app/remove";
+        var modal = "#modal";
+
+        $.get(urlModal, function (data) {
+            $(modal).html(data);
+            $(modal).find('form').attr('action', action);
+            if (title) {
+                $(modal).find('form').find('#WHAT').text(title);
+            }
+            $(modal).addClass('is-active');
+
+            window.ajaxAfter();
+
+            $('[type="submit"]').click(function(e) {
+                return true;
+            });
+        });
+    }
 });
