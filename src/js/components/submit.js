@@ -265,6 +265,9 @@ window.submitAjax = {
 window.displayNotification = function(form, value) {
     if ( form.parents('.modal').length ) {
         form.parents('.modal').find('.notifications-top').html(window.notification.error(value));
+        $(".modal .modal-card").animate({
+            scrollTop: 0
+        }, 500);
     } else {
         $('.notifications-top').html(window.notification.error(value));
     }
