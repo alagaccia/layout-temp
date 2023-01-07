@@ -54,6 +54,9 @@ window.submitAjax = {
         $('.helper-text').text('');
         $('[name]').removeClass('is-danger');
         $('.tab a').removeClass('active');
+        $('input.is-danger').removeClass('is-danger');
+        $('.select.is-danger').removeClass('is-danger');
+        $('.help.is-danger').remove();
         // Spin the button
         btnSubmit.find('i').attr('class', 'fas fa-spinner fa-spin');
         // Disable submit button to prevent double click
@@ -230,10 +233,6 @@ window.submitAjax = {
                     this.actions(result.responseJSON);
 
                     if (result.responseJSON.errors) {
-                        $('.help.is-danger').remove();
-                        $('input.is-danger').removeClass('is-danger');
-                        $('.select.is-danger').removeClass('is-danger');
-
                         $.each(result.responseJSON.errors, function (index, value) {
                             index = dotToArray(index);
 
