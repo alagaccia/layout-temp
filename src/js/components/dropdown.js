@@ -1,4 +1,4 @@
-$('.dropdown').click( function() {
+$(document).on('click', '.dropdown', function (e) {
     let hasClass = $(this).hasClass('is-active');
 
     $('.dropdown').removeClass('is-active');
