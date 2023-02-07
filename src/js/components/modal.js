@@ -61,7 +61,7 @@ $(function(){
         }
     });
 
-    $(document).on('click', '.modal-card-head .delete, .modal-card-foot .close-modal', function () {
+    $(document).on('click', '.modal-card-head .close-modal, .modal-card-foot .close-modal', function () {
         $(this).parents('.modal').removeClass('is-active').html('');
     });
 });
