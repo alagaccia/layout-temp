@@ -35,7 +35,7 @@ $(function(){
      **/
     $(document).keyup(function(e) {
         if (e.keyCode === 27) {
-            $(".modal").removeClass('is-active').html('');
+            // $(".modal").removeClass('is-active').html('');
             $(".dropdown").removeClass('is-active');
         }
     });
